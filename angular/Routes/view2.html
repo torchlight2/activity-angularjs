@@ -1,0 +1,22 @@
+<!Doctype html>
+<html data-ng-app="demoApp">
+
+<head>
+	
+</head>
+
+<body>
+<div class="container">
+<h2>View 2</h2>
+City:
+
+<br/>
+<input type="text" data-ng-model="city" />
+<br/>
+
+<ul>
+<li data-ng-repeat="cust in customers | filter:city | orderBY:'city' "></li>
+</ul>
+</div>
+</body>
+</html>

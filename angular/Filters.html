@@ -1,0 +1,21 @@
+<!Doctype html>
+<html data-ng-app="">
+
+<head>
+	<title>Using AngularJS Directives</title>
+</head>
+
+<body data-ng-init="customers=[{name:'John Smith',city:'phoenix'},{name:'John Doe',city:'New York'},{name:'Jane Doe',city:'San Francisco'}]">
+	<br/>
+		Name:
+	<br/>
+		<input type="text" data-ng-model="name"/>{{name}}
+
+	<ul>
+		<li data-ng-repeat="cust in customers |filter:name|orderBy:'city'">
+			{{cust.name|uppercase}} - {{cust.city|lowercase}}</li>
+	</ul>
+
+	<script src="Scripts/angular.min.js"></script>
+</body>
+</html>

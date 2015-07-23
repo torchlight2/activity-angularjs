@@ -1,0 +1,83 @@
+<!Doctype html>
+<html data-ng-app="demoApp">
+
+<head>
+	<title>Using AngularJS Directives</title>
+</head>
+
+<body>
+<div class="container" data-ng-controller="SimpleController">
+<h2>View 1</h2>
+Name:
+
+<br/>
+<input type="text" data-ng-model="filter.name" />
+<br/>
+
+<ul>
+<li data-ng-repeat="cust in customers | filter:filter.name |orderBy:'city'">
+				{{cust.name}} - {{cust.city}}</li>
+</ul>
+
+<br/>
+
+Customer Name:<br/>
+<input type="text" data-ng-model="newCustomer.name"/>
+<br/>
+Customer City:<br/>
+<input type="text" data-ng-model="newCustomer.city"/>
+<br/>
+<button data-ng-click="addCustomer()">Add Customer</button>
+<br/>
+
+<a href="#/view2">View 2</a>
+<div>
+
+<div data-ng-view =""></div>
+</div>
+<br/>
+</div>
+
+<script src="Scripts/angular.min.js"></script>
+	<script>
+	var demoApp = angular.module('demoApp', []);
+
+		demoApp.controller('SimpleController', function ($scope){
+			$scope.customers = [
+				{name:'John Smith', city:'Phoenix'},
+				{name:'John Doe', city:'New York'},
+				{name:'Jane Doe', city:'San Francisco'}
+			];
+
+			$scope.addCustomer = function(){
+				$scope.customers.push(
+					{
+
+						name: $scope.newCustomer.name,
+						city: $scope.newCustomer.city
+					});
+			};
+		});
+
+/*demoApp.config(function ($routeProvider){
+	$routeProvider
+		.when('/view1',
+			{
+				controller:'SimpleController',
+				templateUrl:'angular/view1.html'
+			})
+		.when('/view2',
+		{
+			controller:'SimpleController',
+			templateUrl:'angular/view2.html'
+		})
+		.otherwise({redirectto: '/view1'});
+
+});*/
+
+	
+
+	</script>
+
+</body>
+</html>
