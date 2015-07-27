@@ -6,7 +6,10 @@
 </head>
 
 <body>
+<div data-ng-controller="SimpleController">
+
 <div class="container">
+
 <h2>View 2</h2>
 City:
 
@@ -17,6 +20,9 @@ City:
 <ul>
 <li data-ng-repeat="cust in customers | filter:city | orderBY:'city' "></li>
 </ul>
+
+</div>
+
 </div>
 </body>
 </html>
